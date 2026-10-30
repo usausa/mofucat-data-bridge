@@ -7,7 +7,6 @@ using System.Reflection;
 
 public sealed class ObjectDataReaderOption<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)] T>
 {
-#pragma warning disable IDE0028
     private static readonly PropertyInfo[] DefaultSelector =
         typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
             .Where(static x => x.CanRead && (x.GetCustomAttribute<DataIgnoreAttribute>() is null))
@@ -20,7 +19,6 @@ public sealed class ObjectDataReaderOption<[DynamicallyAccessedMembers(Dynamical
             .ThenBy(static x => x.Index)
             .Select(static x => x.Property)
             .ToArray();
-#pragma warning restore IDE0028
 
     private static readonly ConcurrentDictionary<PropertyInfo, Func<T, object?>> Accessors = new();
 
