@@ -193,8 +193,7 @@ internal static class DataHelper
         "2,,Data-2,,false,2000-12-31 23:59:59";
 
 #pragma warning disable CA2000
-    public static CsvDataReader CreateCsvReader() =>
-        new(new CsvReader(new StringReader(Content), CultureInfo.InvariantCulture));
+    public static CsvDataReader CreateCsvReader() => new(CsvReader.Create(new StringReader(Content)));
 #pragma warning restore CA2000
 
     public static MappingDataReaderOption CreateCsvOption()

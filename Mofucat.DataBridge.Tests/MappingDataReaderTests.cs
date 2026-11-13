@@ -1,8 +1,6 @@
 // ReSharper disable UseUtf8StringLiteral
 namespace Mofucat.DataBridge;
 
-using System.Globalization;
-
 using CsvHelper;
 
 #pragma warning disable IDE0230
@@ -16,7 +14,7 @@ public class MappingDataReaderTests
             "1,,10,,true\n" +
             "2,,,,false\n" +
             "3,,30,,true";
-        using var csv = new CsvReader(new StringReader(content), CultureInfo.InvariantCulture);
+        using var csv = CsvReader.Create(new StringReader(content));
         using var source = new CsvDataReader(csv);
 
         var option = new MappingDataReaderOption();
@@ -77,7 +75,7 @@ public class MappingDataReaderTests
         var content =
             "Col1,Col2,Col3,Col4,Col5,Col6,Col7\n" +
             "true,1,A,2000-12-31 23:59:59,00000000-0000-0000-0000-000000000000,00112233445566778899AABBCCDDEEFF,0123456789";
-        using var csv = new CsvReader(new StringReader(content), CultureInfo.InvariantCulture);
+        using var csv = CsvReader.Create(new StringReader(content));
         using var source = new CsvDataReader(csv);
 
         var option = new MappingDataReaderOption();
@@ -119,7 +117,7 @@ public class MappingDataReaderTests
         var content =
             "Col1,Col2\n" +
             "00112233445566778899AABBCCDDEEFF,0123456789";
-        using var csv = new CsvReader(new StringReader(content), CultureInfo.InvariantCulture);
+        using var csv = CsvReader.Create(new StringReader(content));
         using var source = new CsvDataReader(csv);
 
         var option = new MappingDataReaderOption();
@@ -159,7 +157,7 @@ public class MappingDataReaderTests
         var content =
             "Col1,Col2,Col3\n" +
             "1,2,3";
-        using var csv = new CsvReader(new StringReader(content), CultureInfo.InvariantCulture);
+        using var csv = CsvReader.Create(new StringReader(content));
         using var source = new CsvDataReader(csv);
 
         var option = new MappingDataReaderOption();
@@ -186,7 +184,7 @@ public class MappingDataReaderTests
         var content =
             "Col1,Col2\n" +
             "abc,x";
-        using var csv = new CsvReader(new StringReader(content), CultureInfo.InvariantCulture);
+        using var csv = CsvReader.Create(new StringReader(content));
         using var source = new CsvDataReader(csv);
 
         var option = new MappingDataReaderOption();
