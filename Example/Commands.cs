@@ -1,7 +1,6 @@
 namespace Example;
 
 using System.Data;
-using System.Globalization;
 
 using CsvHelper;
 
