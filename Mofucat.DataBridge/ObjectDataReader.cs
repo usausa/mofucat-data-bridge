@@ -286,7 +286,7 @@ public sealed class ObjectDataReader<[DynamicallyAccessedMembers(DynamicallyAcce
         return value as string ?? Convert.ToString(value, CultureInfo.InvariantCulture)!;
     }
 
-    public long GetBytes(int i, long fieldOffset, byte[]? buffer, int bufferOffset, int length)
+    public long GetBytes(int i, long fieldOffset, byte[]? buffer, int bufferoffset, int length)
     {
         var value = GetObjectValue(i);
         if (value is byte[] array)
@@ -299,7 +299,7 @@ public sealed class ObjectDataReader<[DynamicallyAccessedMembers(DynamicallyAcce
             var count = Math.Max(0, Math.Min(length, array.Length - (int)fieldOffset));
             if (count > 0)
             {
-                array.AsSpan((int)fieldOffset, count).CopyTo(buffer.AsSpan(bufferOffset, count));
+                array.AsSpan((int)fieldOffset, count).CopyTo(buffer.AsSpan(bufferoffset, count));
             }
 
             return count;
@@ -309,7 +309,7 @@ public sealed class ObjectDataReader<[DynamicallyAccessedMembers(DynamicallyAcce
         throw new NotSupportedException($"Convert to bytes is not supported. type=[{name}]");
     }
 
-    public long GetChars(int i, long fieldOffset, char[]? buffer, int bufferOffset, int length)
+    public long GetChars(int i, long fieldoffset, char[]? buffer, int bufferoffset, int length)
     {
         var value = GetObjectValue(i);
         if (value is char[] array)
@@ -319,10 +319,10 @@ public sealed class ObjectDataReader<[DynamicallyAccessedMembers(DynamicallyAcce
                 return array.Length;
             }
 
-            var count = Math.Max(0, Math.Min(length, array.Length - (int)fieldOffset));
+            var count = Math.Max(0, Math.Min(length, array.Length - (int)fieldoffset));
             if (count > 0)
             {
-                array.AsSpan((int)fieldOffset, count).CopyTo(buffer.AsSpan(bufferOffset, count));
+                array.AsSpan((int)fieldoffset, count).CopyTo(buffer.AsSpan(bufferoffset, count));
             }
 
             return count;
