@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.2" />
     <PackageReference Include="MySqlConnector" Version="3.0.0" />
     <PackageReference Include="System.CommandLine" Version="3.0.0" />
-    <PackageReference Include="Usa.Smart.CommandLine.Hosting" Version="3.0.0" />
+    <PackageReference Include="Usa.Smart.CommandLine.Hosting" Version="3.1.0" />
     <PackageReference Include="Usa.Smart.Data.Mapper" Version="3.0.0" />
   </ItemGroup>
 
